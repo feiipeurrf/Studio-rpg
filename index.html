@@ -1,7 +1,187 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101522"><title>Estúdio RPG — Animation Lab</title><style>
-:root{color-scheme:dark;--bg:#0d1320;--panel:#172235;--line:#30415d;--gold:#e9b85c;--muted:#9eafc5;--text:#f2f4f8}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#293955,#0d1320 60%);color:var(--text);font:14px system-ui,Arial}header{height:66px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;background:#111a2a;border-bottom:1px solid var(--line);position:sticky;top:0}.brand{font-weight:800;letter-spacing:1px}.brand b{color:var(--gold);font-size:21px;margin-right:10px}.online{color:#75d5a6;font-size:12px}.layout{max-width:1450px;margin:auto;padding:18px;display:grid;grid-template-columns:205px 1fr 245px;gap:14px}.panel{background:linear-gradient(145deg,#1b2940,#141e2f);border:1px solid var(--line);border-radius:13px;padding:14px;min-width:0}.section{font-size:10px;letter-spacing:1.5px;color:var(--muted);font-weight:bold;margin:5px 0 10px}.tool{width:100%;text-align:left;padding:11px 9px;border:1px solid transparent;background:transparent;color:#e3eaf3;border-radius:8px;cursor:pointer;margin:2px 0}.tool:hover,.tool.active{background:#2a3c58;border-color:#506784;color:var(--gold)}.tool span{display:inline-block;width:25px}.center{display:grid;gap:13px;align-content:start}.heading{display:flex;justify-content:space-between;align-items:center}.heading h1{font-size:20px;margin:0}.sub{color:var(--muted);font-size:12px;margin-top:4px}.tag{font-size:10px;border:1px solid #465c78;padding:6px 9px;border-radius:30px;color:#c7d5e7}.stage{height:min(54vh,500px);min-height:280px;border:1px solid #40536a;border-radius:9px;background-color:#1d342e;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:24px 24px;display:grid;place-items:center}.stage canvas{width:min(75%,420px);height:auto;image-rendering:pixelated}.stagehead,.stagefoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.stagefoot{font-size:11px;color:var(--muted);margin:10px 0 0}.frames{display:grid;grid-template-columns:repeat(8,1fr);gap:7px}.frame{border:1px solid var(--line);border-radius:7px;background:#101a29;color:var(--muted);font-size:10px;text-align:center;padding:4px;cursor:pointer}.frame.active{border-color:var(--gold);color:var(--gold)}.frame canvas{width:100%;image-rendering:pixelated}.right h3{font-size:13px;margin:4px 0 15px}.field{margin:17px 0}.field label{display:flex;justify-content:space-between;font-size:11px;color:#c3cede;margin-bottom:8px}.value{color:var(--gold)}input[type=range]{width:100%;accent-color:var(--gold)}button.action{background:#263750;color:white;border:1px solid #4a607c;border-radius:8px;padding:10px;cursor:pointer}button.action.primary{background:#76551d;border-color:#ae843d}.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.wide{grid-column:1/-1}.divider{height:1px;background:var(--line);margin:18px 0}.note{font-size:11px;line-height:1.6;color:var(--muted)}.status{font-size:11px;color:#7ed5a9;min-height:18px;margin-top:12px}input[type=file]{width:100%;font-size:10px;color:var(--muted)}footer{text-align:center;color:#72839b;padding:0 10px 18px;font-size:10px}@media(max-width:950px){.layout{grid-template-columns:170px 1fr}.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px}.right h3,.right .divider{grid-column:1/-1}}@media(max-width:620px){header{padding:0 13px}.layout{grid-template-columns:1fr;padding:10px}.side{display:grid;grid-template-columns:repeat(3,1fr)}.section,.note{grid-column:1/-1}.tool{text-align:center;font-size:11px;padding:8px 2px}.tool span{display:none}.right{display:block;grid-column:auto}.stage{height:290px;min-height:250px}.frames{grid-template-columns:repeat(4,1fr)}.heading h1{font-size:17px}}
-</style></head><body><header><div class="brand"><b>⚔</b>ESTÚDIO RPG <span style="font-size:10px;color:#91a2b8;font-weight:400">/ ANIMATION WORKSHOP</span></div><div class="online">● ESTÚDIO ONLINE</div></header>
-<main class="layout"><nav class="panel side"><div class="section">ANIMAÇÕES</div><button class="tool active" data-anim="idle"><span>◉</span>Parado</button><button class="tool" data-anim="walk"><span>➜</span>Andar</button><button class="tool" data-anim="run"><span>➤</span>Correr</button><button class="tool" data-anim="attack"><span>⚔</span>Ataque</button><button class="tool" data-anim="hurt"><span>✦</span>Sofrer dano</button><button class="tool" data-anim="death"><span>☠</span>Morte</button><div class="section" style="margin-top:22px">DIREÇÃO</div><button class="tool active" data-dir="down">↓ Frente</button><button class="tool" data-dir="up">↑ Costas</button><button class="tool" data-dir="left">← Esquerda</button><button class="tool" data-dir="right">→ Direita</button><p class="note">Escolha o movimento. A prévia aparece imediatamente na tela central.</p></nav>
-<section class="center"><div class="heading"><div><h1>Área de visualização</h1><div class="sub">Criação, reprodução e revisão de movimentos</div></div><span class="tag" id="label">PARADO · FRENTE</span></div><div class="panel"><div class="stagehead"><b>PRÉ-VISUALIZAÇÃO</b><span class="tag" id="frameLabel">QUADRO 1 / 8</span></div><div class="stage"><canvas id="screen" width="192" height="192"></canvas></div><div class="stagefoot"><span id="playState">Prévia pronta</span><span>PIXEL ART · 192 × 192</span></div></div><div class="panel"><div class="stagehead"><b>QUADROS DA ANIMAÇÃO</b><span class="tag">SPRITESHEET</span></div><div class="frames" id="frames"></div></div></section>
-<aside class="panel right"><h3>CONTROLES</h3><div class="field"><label>Velocidade <span class="value" id="speedText">100%</span></label><input id="speed" type="range" min="25" max="200" step="5" value="100"></div><div class="field"><label>FPS <span class="value" id="fpsText">8 FPS</span></label><input id="fps" type="range" min="2" max="18" value="8"></div><div class="field"><label>Zoom <span class="value" id="zoomText">2×</span></label><input id="zoom" type="range" min="1" max="4" value="2"></div><div class="actions"><button class="action primary" id="play">▶ Reproduzir</button><button class="action" id="pause">Ⅱ Pausar</button><button class="action" id="restart">↻ Reiniciar</button><button class="action" id="loop">Loop: sim</button><button class="action wide" id="png">⇩ Exportar spritesheet PNG</button><button class="action wide" id="zip">⇩ Exportar pacote ZIP</button></div><div class="divider"></div><h3>IMPORTAR IMAGEM</h3><input id="file" type="file" accept="image/png,image/webp"><p class="note">Importe uma imagem para referência. A versão atual gera animações demonstrativas; os sprites definitivos serão integrados após aprovação.</p><div class="divider"></div><h3>STATUS DA PRODUÇÃO</h3><p class="note" id="production">Personagem provisório de demonstração. Não é o sprite oficial do protagonista.</p><div class="status" id="status">Estúdio pronto.</div></aside></main><footer>ESTÚDIO RPG · Ferramenta de produção visual para o RPG 2D</footer>
-<script>(()=>{const $=x=>document.getElementById(x),cv=$('screen'),ctx=cv.getContext('2d'),N=8,W=192,H=192;let anim='idle',dir='down',frame=0,playing=true,loop=true,raf=0,last=0,uploaded=null;const names={idle:'Parado',walk:'Andar',run:'Correr',attack:'Ataque',hurt:'Sofrer dano',death:'Morte'};function p(c,x,y,w,h,col){c.fillStyle=col;c.fillRect(x,y,w,h)}function draw(c,f,a,d){c.clearRect(0,0,W,H);let dead=a==='death',bob=a==='idle'?Math.sin(f/2):f%2?2:-2,step=Math.sin(f*Math.PI/2);c.save();c.translate(96,dead?145:104+bob);if(d==='left')c.scale(-1,1);if(dead)c.rotate(-1.2);p(c,-19,41,38,4,'#16271d');p(c,-10+step*4,21,9,19,'#354052');p(c,2-step*4,21,9,19,'#354052');p(c,-12,38,12,5,'#513b2d');p(c,1,38,12,5,'#513b2d');p(c,-13,0,26,25,'#d5c3a0');p(c,-15,3,6,18,'#815832');p(c,10,3,6,18,'#815832');p(c,-12,-24,24,24,'#e6b58c');p(c,-15,-31,30,12,'#29242c');p(c,-15,-27,5,14,'#29242c');p(c,10,-27,5,14,'#29242c');if(d==='down'){p(c,-7,-16,3,3,'#332a2a');p(c,4,-16,3,3,'#332a2a')}if(a==='attack'){p(c,18,-12,4,28,'#dce5ef');p(c,20,-17,3,7,'#dce5ef')}if(a==='hurt'){p(c,-22,-35,4,4,'#ed6c69');p(c,20,-28,4,4,'#ed6c69')}c.restore()}function render(){if(uploaded){ctx.clearRect(0,0,W,H);ctx.drawImage(uploaded,0,0,W,H)}else draw(ctx,frame,anim,dir);$('frameLabel').textContent='QUADRO '+(frame+1)+' / '+N;$('label').textContent=names[anim].toUpperCase()+' · '+({down:'FRENTE',up:'COSTAS',left:'ESQUERDA',right:'DIREITA'}[dir]);let wrap=$('frames');wrap.replaceChildren();for(let i=0;i<N;i++){let b=document.createElement('div');b.className='frame'+(i===frame?' active':'');let c=document.createElement('canvas');c.width=96;c.height=96;let x=c.getContext('2d');x.scale(.5,.5);if(uploaded)x.drawImage(uploaded,0,0,192,192);else draw(x,i,anim,dir);b.append(c,document.createTextNode('Quadro '+(i+1)));b.onclick=()=>{frame=i;render()};wrap.append(b)}}function tick(t){if(!playing)return;if(!last)last=t;if(t-last>=1000/(+$('fps').value*+$('speed').value/100)){frame++;if(frame>=N){if(loop)frame=0;else{frame=N-1;playing=false;$('playState').textContent='Sequência concluída'}}last=t;render()}if(playing)raf=requestAnimationFrame(tick)}function play(){cancelAnimationFrame(raf);playing=true;last=0;$('playState').textContent='Reproduzindo';raf=requestAnimationFrame(tick)}function pause(){playing=false;cancelAnimationFrame(raf);$('playState').textContent='Pausado'}document.querySelectorAll('[data-anim]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-anim]').forEach(x=>x.classList.remove('active'));b.classList.add('active');anim=b.dataset.anim;frame=0;uploaded=null;render();play()});document.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-dir]').forEach(x=>x.classList.remove('active'));b.classList.add('active');dir=b.dataset.dir;render()});$('play').onclick=play;$('pause').onclick=pause;$('restart').onclick=()=>{frame=0;render();play()};$('loop').onclick=()=>{loop=!loop;$('loop').textContent='Loop: '+(loop?'sim':'não')};$('speed').oninput=()=>{$('speedText').textContent=$('speed').value+'%'};$('fps').oninput=()=>{$('fpsText').textContent=$('fps').value+' FPS'};$('zoom').oninput=()=>{$('zoomText').textContent=$('zoom').value+'×';cv.style.width=(35*+$('zoom').value)+'%'};function sheet(){let o=document.createElement('canvas');o.width=W*N;o.height=H;let c=o.getContext('2d');for(let i=0;i<N;i++)draw(c,i,anim,dir);return o}function download(blob,name){let a=document.createElement('a'),u=URL.createObjectURL(blob);a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}$('png').onclick=()=>sheet().toBlob(b=>download(b,'estudio-rpg-'+anim+'-'+dir+'.png'));$('zip').onclick=async()=>{let s=sheet(),blob=await new Promise(r=>s.toBlob(r)),png=new Uint8Array(await blob.arrayBuffer()),meta=new TextEncoder().encode(JSON.stringify({projeto:'Estúdio RPG',animacao:anim,direcao:dir,quadros:N,fps:+$('fps').value,velocidade:+$('speed').value,observacao:'Animação demonstrativa; substituir pelos sprites finais aprovados.'},null,2)),readme=new TextEncoder().encode('Pacote exportado pelo Estúdio RPG.\nConsulte metadata.json.\nA arte é demonstrativa.');download(new Blob([zipFiles([['spritesheet.png',png],['metadata.json',meta],['LEIA-ME.txt',readme]])],{type:'application/zip'}),'estudio-rpg-'+anim+'.zip')};function zipFiles(files){let table=[];for(let i=0;i<256;i++){let c=i;for(let j=0;j<8;j++)c=c&1?0xedb88320^(c>>>1):c>>>1;table[i]=c>>>0}function crc(b){let c=0xffffffff;for(let x of b)c=table[(c^x)&255]^(c>>>8);return(c^0xffffffff)>>>0}let local=[],central=[],offset=0;for(let [name,data] of files){let n=new TextEncoder().encode(name),sum=crc(data),h=new Uint8Array(30+n.length),v=new DataView(h.buffer);v.setUint32(0,0x04034b50,true);v.setUint16(4,20,true);v.setUint32(14,sum,true);v.setUint32(18,data.length,true);v.setUint32(22,data.length,true);v.setUint16(26,n.length,true);h.set(n,30);local.push(h,data);let q=new Uint8Array(46+n.length),z=new DataView(q.buffer);z.setUint32(0,0x02014b50,true);z.setUint16(4,20,true);z.setUint16(6,20,true);z.setUint32(16,sum,true);z.setUint32(20,data.length,true);z.setUint32(24,data.length,true);z.setUint16(28,n.length,true);z.setUint32(42,offset,true);q.set(n,46);central.push(q);offset+=h.length+data.length}let size=central.reduce((s,x)=>s+x.length,0),end=new Uint8Array(22),v=new DataView(end.buffer);v.setUint32(0,0x06054b50,true);v.setUint16(8,files.length,true);v.setUint16(10,files.length,true);v.setUint32(12,size,true);v.setUint32(16,offset,true);return[...local,...central,end]}$('file').onchange=e=>{let f=e.target.files[0];if(!f)return;let im=new Image();im.onload=()=>{uploaded=im;render();$('production').textContent='Imagem importada como referência de visualização.'};im.src=URL.createObjectURL(f)};render();play()})();</script></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101522">
+<title>Estúdio RPG — Oficina de Animação</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111d;--panel:#151f30;--panel2:#1b2940;--line:#2e405a;--gold:#edbd65;--text:#f2f5fa;--muted:#9eacc0;--green:#76d5a5;--red:#e67b7b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#293955 0,#0b111d 62%);color:var(--text);font:14px system-ui,Arial,sans-serif}
+header{height:66px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;background:#101827;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.brand{font-weight:850;letter-spacing:1px}.brand b{color:var(--gold);font-size:22px;margin-right:10px}.online{color:var(--green);font-size:11px}
+.layout{max-width:1550px;margin:auto;padding:16px;display:grid;grid-template-columns:220px minmax(320px,1fr) 260px;gap:13px}
+.panel{background:linear-gradient(145deg,#1a2840,#131d2d);border:1px solid var(--line);border-radius:13px;padding:14px;min-width:0;box-shadow:0 10px 28px #0002}
+.section{font-size:10px;letter-spacing:1.5px;color:var(--muted);font-weight:800;margin:5px 0 10px}
+.tool{width:100%;text-align:left;padding:10px 9px;border:1px solid transparent;background:transparent;color:#e3eaf3;border-radius:8px;cursor:pointer;margin:2px 0;font:inherit}
+.tool:hover,.tool.active{background:#2a3c58;border-color:#506784;color:var(--gold)}
+.tool span{display:inline-block;width:25px}.side .note{margin-top:14px}
+.center{display:grid;gap:12px;align-content:start;min-width:0}.heading{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.heading h1{font-size:20px;margin:0}.sub{color:var(--muted);font-size:12px;margin-top:4px}
+.tag{font-size:10px;border:1px solid #465c78;padding:6px 9px;border-radius:30px;color:#c7d5e7;white-space:nowrap}
+.stage{height:min(52vh,500px);min-height:280px;border:1px solid #40536a;border-radius:9px;background-color:#1d342e;background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:24px 24px;display:grid;place-items:center;overflow:hidden}
+.stage.checker{background-color:#283244;background-image:linear-gradient(45deg,#ffffff0c 25%,transparent 25%),linear-gradient(-45deg,#ffffff0c 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ffffff0c 75%),linear-gradient(-45deg,transparent 75%,#ffffff0c 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}
+.stage canvas{width:40%;max-width:460px;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+.stagehead,.stagefoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.stagefoot{font-size:11px;color:var(--muted);margin:10px 0 0}
+.frames{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:7px}
+.frame{border:1px solid var(--line);border-radius:7px;background:#101a29;color:var(--muted);font-size:10px;text-align:center;padding:5px 3px;cursor:pointer;min-width:0}
+.frame:hover,.frame.active{border-color:var(--gold);color:var(--gold);background:#2a2a2a}
+.frame canvas{width:100%;image-rendering:pixelated;display:block;margin-bottom:4px}
+.right h3{font-size:12px;letter-spacing:.6px;margin:4px 0 14px}.field{margin:15px 0}
+.field label{display:flex;justify-content:space-between;font-size:11px;color:#c3cede;margin-bottom:8px}.value{color:var(--gold)}
+input[type=range]{width:100%;accent-color:var(--gold)}button.action,.select, .textinput{background:#263750;color:white;border:1px solid #4a607c;border-radius:8px;padding:9px;cursor:pointer;font:inherit}
+button.action:hover{filter:brightness(1.15)}button.action.primary{background:#76551d;border-color:#ae843d}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.wide{grid-column:1/-1}
+.divider{height:1px;background:var(--line);margin:16px 0}.note{font-size:11px;line-height:1.6;color:var(--muted)}
+input[type=file]{width:100%;font-size:10px;color:var(--muted)}.status{font-size:11px;color:var(--green);min-height:18px;margin-top:10px}
+.select,.textinput{width:100%;padding:9px}.row{display:flex;gap:7px;align-items:center}.row>*{min-width:0;flex:1}
+.toggleline{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#c3cede;margin:10px 0}
+.toggleline input{accent-color:var(--gold)}.mini{font-size:10px;color:var(--muted)}
+footer{text-align:center;color:#72839b;padding:0 10px 18px;font-size:10px}
+.modalback{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:10;padding:16px}.modalback.open{display:grid}
+.modal{width:min(440px,100%);background:#172438;border:1px solid #526783;border-radius:14px;padding:18px;box-shadow:0 20px 70px #0009}
+.modal h2{margin:0 0 8px;font-size:18px}.modal p{color:var(--muted);font-size:12px;line-height:1.5}
+.modal .field{margin:12px 0}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}
+@media(max-width:980px){.layout{grid-template-columns:180px minmax(300px,1fr)}.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px}.right h3,.right .divider{grid-column:1/-1}}
+@media(max-width:650px){header{padding:0 12px}.layout{grid-template-columns:1fr;padding:9px}.side{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}.section,.side .note{grid-column:1/-1}.tool{text-align:center;font-size:11px;padding:8px 2px}.tool span{display:none}.right{display:block;grid-column:auto}.stage{height:290px;min-height:250px}.frames{grid-template-columns:repeat(4,1fr)}.heading h1{font-size:17px}.stage canvas{width:55%}}
+</style>
+</head>
+<body>
+<header><div class="brand"><b>⚔</b>ESTÚDIO RPG <span style="font-size:10px;color:#91a2b8;font-weight:400">/ OFICINA DE ANIMAÇÃO</span></div><div class="online">● ÁREA DE TRABALHO</div></header>
+<main class="layout">
+<nav class="panel side">
+ <div class="section">BIBLIOTECA DE MOVIMENTOS</div>
+ <button class="tool active" data-anim="idle"><span>◉</span>Parado</button>
+ <button class="tool" data-anim="walk"><span>➜</span>Andar</button>
+ <button class="tool" data-anim="run"><span>➤</span>Correr</button>
+ <button class="tool" data-anim="attack"><span>⚔</span>Ataque</button>
+ <button class="tool" data-anim="hurt"><span>✦</span>Sofrer dano</button>
+ <button class="tool" data-anim="death"><span>☠</span>Morte</button>
+ <div class="section" style="margin-top:20px">ORIENTAÇÃO</div>
+ <button class="tool active" data-dir="down"><span>↓</span>Frente</button>
+ <button class="tool" data-dir="up"><span>↑</span>Costas</button>
+ <button class="tool" data-dir="left"><span>←</span>Esquerda</button>
+ <button class="tool" data-dir="right"><span>→</span>Direita</button>
+ <div class="section" style="margin-top:20px">PERSONAGEM / RECURSO</div>
+ <select class="select" id="asset"><option value="hero">Herói — demonstração</option><option value="monster">Monstro — demonstração</option><option value="npc">NPC — demonstração</option></select>
+ <p class="note">Selecione um movimento e uma direção. As mudanças aparecem imediatamente na área central. Os desenhos atuais são modelos provisórios.</p>
+</nav>
+<section class="center">
+ <div class="heading"><div><h1>Área de visualização</h1><div class="sub">Prévia em tempo real · edição e revisão de quadros</div></div><span class="tag" id="label">PARADO · FRENTE</span></div>
+ <div class="panel">
+  <div class="stagehead"><b>PALCO DE ANIMAÇÃO</b><span class="tag" id="frameLabel">QUADRO 1 / 8</span></div>
+  <div class="stage" id="stage"><canvas id="screen" width="192" height="192"></canvas></div>
+  <div class="stagefoot"><span id="playState">Prévia pronta</span><span id="dimensions">192 × 192 px · pixel art</span></div>
+ </div>
+ <div class="panel">
+  <div class="stagehead"><b>LINHA DO TEMPO</b><div class="row" style="max-width:210px"><button class="action" id="addFrame" title="Adicionar quadro">＋ Quadro</button><button class="action" id="removeFrame" title="Remover quadro">− Quadro</button></div></div>
+  <div class="frames" id="frames"></div>
+  <div class="stagefoot"><span>Toque em um quadro para inspecionar.</span><span id="frameCount">8 quadros</span></div>
+ </div>
+</section>
+<aside class="panel right">
+ <h3>CONTROLES DE ANIMAÇÃO</h3>
+ <div class="field"><label>Velocidade <span class="value" id="speedText">100%</span></label><input id="speed" type="range" min="25" max="200" step="5" value="100"></div>
+ <div class="field"><label>Taxa de quadros <span class="value" id="fpsText">8 FPS</span></label><input id="fps" type="range" min="2" max="24" value="8"></div>
+ <div class="field"><label>Zoom <span class="value" id="zoomText">2×</span></label><input id="zoom" type="range" min="1" max="5" value="2"></div>
+ <div class="actions">
+  <button class="action primary" id="play">▶ Reproduzir</button><button class="action" id="pause">Ⅱ Pausar</button>
+  <button class="action" id="restart">↻ Reiniciar</button><button class="action" id="loop">Loop: sim</button>
+  <button class="action wide" id="png">⇩ Exportar spritesheet PNG</button><button class="action wide" id="zip">⇩ Exportar pacote ZIP</button>
+ </div>
+ <div class="divider"></div><h3>VISUALIZAÇÃO</h3>
+ <label class="toggleline">Grade de referência <input type="checkbox" id="grid" checked></label>
+ <label class="toggleline">Fundo quadriculado <input type="checkbox" id="checker"></label>
+ <label class="toggleline">Exibir rastro dos quadros <input type="checkbox" id="onion"></label>
+ <div class="divider"></div><h3>IMPORTAR SPRITESHEET</h3>
+ <input id="file" type="file" accept="image/png,image/webp,image/jpeg">
+ <div class="field"><label>Colunas da imagem <span class="value" id="colsText">4</span></label><input id="cols" type="range" min="1" max="16" value="4"></div>
+ <button class="action wide" id="importSheet">Importar e dividir em quadros</button>
+ <p class="note">Importe uma spritesheet organizada em células iguais. A divisão é feita pelas colunas informadas e pela altura da imagem.</p>
+ <div class="divider"></div><h3>STATUS DO RECURSO</h3>
+ <p class="note" id="production">Modelo provisório de demonstração. Ainda não é a arte oficial do jogo.</p>
+ <div class="status" id="status" role="status">Estúdio pronto.</div>
+</aside>
+</main>
+<footer>ESTÚDIO RPG · Oficina de produção visual para o jogo RPG 2D · Seus arquivos são processados localmente no navegador</footer>
+<div class="modalback" id="modalback"><div class="modal"><h2>Adicionar quadro</h2><p>Um novo quadro será criado copiando o quadro selecionado. Depois você poderá exportar a sequência para continuar a produção.</p><div class="field"><label>Posição</label><select class="select" id="insertPosition"><option value="after">Depois do quadro atual</option><option value="end">No final da animação</option></select></div><div class="modalactions"><button class="action" id="cancelModal">Cancelar</button><button class="action primary" id="confirmAdd">Adicionar</button></div></div></div>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id), screen=$("screen"),ctx=screen.getContext("2d"),W=192,H=192;
+let anim="idle",dir="down",asset="hero",frame=0,playing=false,loop=true,raf=0,last=0,sourceImage=null,sourceFrames=null,frameCount=8,grid=true,onion=false;
+const labels={idle:"Parado",walk:"Andar",run:"Correr",attack:"Ataque",hurt:"Sofrer dano",death:"Morte"};
+const directions={down:"Frente",up:"Costas",left:"Esquerda",right:"Direita"};
+const colors={hero:{hair:"#29242c",skin:"#e6b58c",coat:"#d5c3a0",cloth:"#815832",pants:"#354052"},monster:{hair:"#304c39",skin:"#75a86a",coat:"#547f53",cloth:"#294a38",pants:"#243a35"},npc:{hair:"#a16b36",skin:"#c98f70",coat:"#7e9ab6",cloth:"#425c7b",pants:"#38465c"}};
+function rect(c,x,y,w,h,color){c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),Math.round(w),Math.round(h))}
+function drawCharacter(c,index,a,d,kind){
+ c.clearRect(0,0,W,H);const col=colors[kind]||colors.hero,phase=index/Math.max(1,frameCount-1),walk=Math.sin(index*Math.PI/2),bob=a==="idle"?Math.sin(index*Math.PI/2)*1.2:(a==="walk"||a==="run"?Math.sin(index*Math.PI/2)*(a==="run"?5:3):0);
+ const isDead=a==="death",isHurt=a==="hurt",isAttack=a==="attack";
+ c.save();c.translate(96, isDead?145:104+bob);
+ if(d==="left")c.scale(-1,1);
+ if(isDead)c.rotate(-1.15+phase*.25);
+ const leg= a==="walk"||a==="run" ? walk*(a==="run"?7:4):0;
+ rect(c,-20,40,40,4,"#16271d");
+ // pernas e botas
+ rect(c,-11+leg,20,9,20,col.pants);rect(c,3-leg,20,9,20,col.pants);
+ rect(c,-13+leg,37,13,6,"#513b2d");rect(c,1-leg,37,13,6,"#513b2d");
+ // tronco e braços
+ rect(c,-13,-2,26,27,col.coat);rect(c,-16,2,6,18,col.cloth);rect(c,10,2,6,18,col.cloth);
+ if(isAttack){rect(c,12,-4,7,17,col.skin);rect(c,17,-15,4,28,"#dce5ef");rect(c,19,-19,3,8,"#dce5ef")}
+ else if(isHurt){rect(c,-21,-8,6,15,col.skin);rect(c,17,-7,6,15,col.skin);rect(c,-23,-33,4,4,"#ed6c69");rect(c,21,-27,4,4,"#ed6c69")}
+ else {rect(c,-18,-5,6,18,col.skin);rect(c,12,-5,6,18,col.skin)}
+ // cabeça / cabelo
+ rect(c,-12,-27,24,25,col.skin);rect(c,-15,-33,30,12,col.hair);rect(c,-15,-29,5,14,col.hair);rect(c,10,-29,5,14,col.hair);
+ if(d==="down"){rect(c,-7,-18,3,3,"#332a2a");rect(c,4,-18,3,3,"#332a2a")}
+ if(d==="up"){rect(c,-12,-27,24,19,col.hair);rect(c,-5,-12,10,5,col.hair)}
+ if(kind==="monster"){rect(c,-15,-37,7,9,"#b8c98b");rect(c,8,-37,7,9,"#b8c98b");rect(c,-7,-18,4,4,"#f4e7a2");rect(c,4,-18,4,4,"#f4e7a2")}
+ if(kind==="npc"){rect(c,-15,-35,30,5,"#d6d9e2");rect(c,-14,-39,28,5,"#d6d9e2")}
+ c.restore();
+}
+function paintSource(c,i){if(!sourceFrames||!sourceFrames.length)return false;const im=sourceFrames[i%sourceFrames.length];c.clearRect(0,0,W,H);c.drawImage(im,0,0,W,H);return true}
+function drawFrame(c,i,a=anim,d=dir,k=asset){if(sourceFrames){paintSource(c,i);return}drawCharacter(c,i,a,d,k)}
+function render(){
+ ctx.clearRect(0,0,W,H);
+ if(onion&&frame>0&&!sourceFrames){ctx.save();ctx.globalAlpha=.18;drawCharacter(ctx,frame-1,anim,dir,asset);ctx.restore()}
+ drawFrame(ctx,frame);
+ $("frameLabel").textContent="QUADRO "+(frame+1)+" / "+frameCount;
+ $("frameCount").textContent=frameCount+" quadros";
+ $("label").textContent=(labels[anim]||anim).toUpperCase()+" · "+directions[dir].toUpperCase();
+ const list=$("frames");list.replaceChildren();
+ for(let i=0;i<frameCount;i++){
+  const b=document.createElement("button");b.type="button";b.className="frame"+(i===frame?" active":"");b.setAttribute("aria-label","Selecionar quadro "+(i+1));
+  const thumb=document.createElement("canvas");thumb.width=96;thumb.height=96;const t=thumb.getContext("2d");t.scale(.5,.5);drawFrame(t,i);
+  b.append(thumb,document.createTextNode("Quadro "+(i+1)));b.onclick=()=>{pause();frame=i;render()};list.append(b);
+ }
+}
+function tick(t){if(!playing)return;if(!last)last=t;const interval=1000/(Number($("fps").value)*Number($("speed").value)/100);if(t-last>=interval){frame++;if(frame>=frameCount){if(loop)frame=0;else{frame=frameCount-1;pause();$("playState").textContent="Sequência concluída"}}last=t;render()}if(playing)raf=requestAnimationFrame(tick)}
+function play(){cancelAnimationFrame(raf);playing=true;last=0;$("playState").textContent="Reproduzindo";raf=requestAnimationFrame(tick)}
+function pause(){playing=false;cancelAnimationFrame(raf);$("playState").textContent="Pausado"}
+function say(msg){$("status").textContent=msg}
+function setActive(selector,attr,value){document.querySelectorAll(selector).forEach(b=>b.classList.toggle("active",b.getAttribute(attr)===value))}
+document.querySelectorAll("[data-anim]").forEach(b=>b.onclick=()=>{pause();anim=b.dataset.anim;frame=0;sourceFrames=null;sourceImage=null;setActive("[data-anim]","data-anim",anim);$("production").textContent="Prévia demonstrativa de "+labels[anim].toLowerCase()+". Substitua pelo sprite final quando estiver aprovado.";render();play()});
+document.querySelectorAll("[data-dir]").forEach(b=>b.onclick=()=>{dir=b.dataset.dir;setActive("[data-dir]","data-dir",dir);render()});
+$("asset").onchange=e=>{asset=e.target.value;sourceFrames=null;frame=0;$("production").textContent="Modelo provisório: "+e.target.options[e.target.selectedIndex].text;render()};
+$("play").onclick=play;$("pause").onclick=pause;$("restart").onclick=()=>{frame=0;render();play()};
+$("loop").onclick=()=>{loop=!loop;$("loop").textContent="Loop: "+(loop?"sim":"não");say("Loop "+(loop?"ativado":"desativado")+".")};
+$("speed").oninput=()=>{$("speedText").textContent=$("speed").value+"%"};$("fps").oninput=()=>{$("fpsText").textContent=$("fps").value+" FPS"};
+$("zoom").oninput=()=>{$("zoomText").textContent=$("zoom").value+"×";screen.style.width=(20*Number($("zoom").value))+"%"};
+$("grid").onchange=e=>{grid=e.target.checked;$("stage").style.backgroundImage=grid?"linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px)":"none"};
+$("checker").onchange=e=>$("stage").classList.toggle("checker",e.target.checked);
+$("onion").onchange=e=>{onion=e.target.checked;render()};
+$("cols").oninput=()=>{$("colsText").textContent=$("cols").value};
+$("file").onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const url=URL.createObjectURL(f),im=new Image();im.onload=()=>{sourceImage=im;sourceFrames=null;$("dimensions").textContent=im.naturalWidth+" × "+im.naturalHeight+" px · imagem carregada";say("Imagem carregada. Defina as colunas e toque em importar.");URL.revokeObjectURL(url)};im.onerror=()=>{say("Não foi possível abrir esta imagem.")};im.src=url};
+$("importSheet").onclick=()=>{if(!sourceImage){say("Escolha uma imagem primeiro.");return}const cols=Number($("cols").value),cellW=sourceImage.naturalWidth/cols,cellH=cellW;if(!Number.isInteger(cellW)||cellW<1||sourceImage.naturalHeight%cellH!==0){say("A imagem precisa ter células quadradas e largura divisível pelo número de colunas.");return}const rows=sourceImage.naturalHeight/cellH,total=cols*rows;sourceFrames=[];for(let i=0;i<total;i++){const x=(i%cols)*cellW,y=Math.floor(i/cols)*cellH,cv=document.createElement("canvas");cv.width=W;cv.height=H;cv.getContext("2d").drawImage(sourceImage,x,y,cellW,cellH,0,0,W,H);sourceFrames.push(cv)}frameCount=total;frame=0;pause();$("production").textContent="Spritesheet importada e dividida em "+total+" quadros. A imagem original não foi alterada.";render();say("Importação concluída: "+total+" quadros.")};
+$("addFrame").onclick=()=>{$("modalback").classList.add("open")};$("cancelModal").onclick=()=>$("modalback").classList.remove("open");
+$("confirmAdd").onclick=()=>{const pos=$("insertPosition").value,index=pos==="end"?frameCount:frame+1;if(sourceFrames){const copy=document.createElement("canvas");copy.width=W;copy.height=H;copy.getContext("2d").drawImage(sourceFrames[frame],0,0);sourceFrames.splice(index,0,copy)}frameCount++;frame=index;pause();$("modalback").classList.remove("open");render();say("Quadro adicionado.")};
+$("removeFrame").onclick=()=>{if(frameCount<=1){say("A animação precisa ter pelo menos um quadro.");return}if(sourceFrames)sourceFrames.splice(frame,1);frameCount--;frame=Math.min(frame,frameCount-1);pause();render();say("Quadro removido da sequência.")};
+function makeSheet(){const out=document.createElement("canvas");out.width=W*frameCount;out.height=H;const c=out.getContext("2d");for(let i=0;i<frameCount;i++)drawFrame(c,i);return out}
+function download(blob,name){const a=document.createElement("a"),url=URL.createObjectURL(blob);a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+function safeName(s){return s.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-zA-Z0-9_-]+/g,"-").toLowerCase()}
+$("png").onclick=()=>{makeSheet().toBlob(blob=>{if(!blob){say("Falha ao gerar PNG.");return}download(blob,"estudio-rpg-"+safeName(anim)+"-"+dir+".png");say("Spritesheet PNG exportada.")},"image/png")};
+function crc32(bytes){let crc=0xffffffff;for(let i=0;i<bytes.length;i++){crc^=bytes[i];for(let j=0;j<8;j++)crc=(crc>>>1)^((crc&1)?0xedb88320:0)}return(crc^0xffffffff)>>>0}
+function makeZip(files){const enc=new TextEncoder(),locals=[],centrals=[];let offset=0;files.forEach(file=>{const name=enc.encode(file.name),data=file.data,crc=crc32(data),lh=new Uint8Array(30+name.length),lv=new DataView(lh.buffer);lv.setUint32(0,0x04034b50,true);lv.setUint16(4,20,true);lv.setUint32(14,crc,true);lv.setUint32(18,data.length,true);lv.setUint32(22,data.length,true);lv.setUint16(26,name.length,true);lh.set(name,30);locals.push(lh,data);const ch=new Uint8Array(46+name.length),cv=new DataView(ch.buffer);cv.setUint32(0,0x02014b50,true);cv.setUint16(4,20,true);cv.setUint16(6,20,true);cv.setUint32(16,crc,true);cv.setUint32(20,data.length,true);cv.setUint32(24,data.length,true);cv.setUint16(28,name.length,true);cv.setUint32(42,offset,true);ch.set(name,46);centrals.push(ch);offset+=lh.length+data.length});const centralSize=centrals.reduce((s,a)=>s+a.length,0),end=new Uint8Array(22),v=new DataView(end.buffer);v.setUint32(0,0x06054b50,true);v.setUint16(8,files.length,true);v.setUint16(10,files.length,true);v.setUint32(12,centralSize,true);v.setUint32(16,offset,true);return new Blob([...locals,...centrals,end],{type:"application/zip"})}
+$("zip").onclick=async()=>{try{const blob=await new Promise(resolve=>makeSheet().toBlob(resolve,"image/png"));if(!blob)throw Error("PNG indisponível");const png=new Uint8Array(await blob.arrayBuffer()),metadata={project:"Estúdio RPG",asset:asset,animation:anim,animation_name:labels[anim],direction:dir,direction_name:directions[dir],frame_count:frameCount,fps:Number($("fps").value),speed_percent:Number($("speed").value),frame_width:W,frame_height:H,sheet_width:W*frameCount,sheet_height:H,layout:"horizontal",created_at:new Date().toISOString(),source:"Estúdio RPG",notes:"Prévia demonstrativa ou spritesheet importada. Conferir e aprovar a arte antes da integração definitiva no jogo."};const json=new TextEncoder().encode(JSON.stringify(metadata,null,2));const guide=new TextEncoder().encode("ESTÚDIO RPG — PACOTE DE ANIMAÇÃO\n\nArquivos:\n- spritesheet.png: quadros em sequência horizontal.\n- metadata.json: dimensões, direção, FPS e identificação da animação.\n- INTEGRACAO.txt: instruções para importar os quadros no projeto do jogo.\n\nIntegração:\n1. Confira se a arte está aprovada.\n2. Importe spritesheet.png como textura.\n3. Use metadata.json para configurar a largura e altura de cada quadro.\n4. Recorte os quadros na ordem da esquerda para a direita.\n5. Configure FPS e direção conforme os metadados.\n\nAtenção: modelos demonstrativos não são arte final.");download(makeZip([{name:"spritesheet.png",data:png},{name:"metadata.json",data:json},{name:"INTEGRACAO.txt",data:guide}]),"estudio-rpg-"+safeName(anim)+"-"+dir+".zip");say("Pacote ZIP exportado com spritesheet, metadados e instruções.")}catch(e){say("Não foi possível criar o ZIP: "+e.message)}};
+render();$("playState").textContent="Prévia pronta";
+})();
+</script>
+</body></html>

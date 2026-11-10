@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10131d"><meta name="description" content="Estúdio RPG — laboratório de animação pixel art para nosso RPG 2D.">
+<title>Estúdio RPG — Animation Lab</title>
+<style>
+:root{color-scheme:dark;--bg:#10131d;--panel:#191f2d;--panel2:#20283a;--line:#303b51;--ink:#f4f0e6;--muted:#aab5c8;--gold:#f2bd59;--mint:#8ed6b0;--blue:#87b8ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#27334a 0,transparent 38%),var(--bg);color:var(--ink);font:15px/1.5 system-ui,Segoe UI,Arial,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px clamp(16px,4vw,48px);border-bottom:1px solid var(--line);background:#111722dd;position:sticky;top:0;z-index:3;backdrop-filter:blur(12px)}
+.brand{display:flex;gap:12px;align-items:center}.sigil{width:42px;height:42px;border:1px solid #927544;background:#332b20;color:var(--gold);display:grid;place-items:center;border-radius:12px;font-size:22px}.brand h1{font-size:20px;letter-spacing:.02em;margin:0}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.pill{border:1px solid #456653;color:var(--mint);padding:6px 11px;border-radius:99px;font-size:12px}
+main{max-width:1320px;margin:auto;padding:26px clamp(14px,3vw,34px) 40px}.intro{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:22px}.eyebrow{color:var(--gold);font-size:11px;letter-spacing:.18em;text-transform:uppercase}.intro h2{font-size:clamp(26px,4vw,42px);line-height:1.12;margin:7px 0}.intro p{color:var(--muted);max-width:620px;margin:0}.workspace{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(270px,.75fr);gap:16px}.panel{background:linear-gradient(145deg,#1b2231,#161c29);border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0}.panel h3{margin:0 0 13px;font-size:15px}.stage{height:clamp(300px,48vw,510px);position:relative;overflow:hidden;border-radius:11px;border:1px solid #40503d;background-color:#263c2d;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:24px 24px;display:grid;place-items:center}.stage canvas{width:min(100%,480px);height:auto;image-rendering:pixelated}.stage-tag{position:absolute;top:12px;left:12px;background:#111722c9;border:1px solid #46516a;border-radius:7px;padding:5px 9px;color:#c5d0e3;font-size:11px}.stage-foot{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;padding-top:12px;gap:12px}.controls{display:grid;gap:15px;align-content:start}.field label{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:7px}.field output{color:var(--gold);font-variant-numeric:tabular-nums}select,button{font:inherit;color:var(--ink);background:#252f43;border:1px solid #465570;border-radius:9px;padding:10px 12px}select{width:100%}button{cursor:pointer;transition:transform .12s,border-color .12s}button:hover{border-color:var(--gold)}button:active{transform:scale(.98)}button.primary{background:#77591f;border-color:#a98237}.btnrow{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.btnrow button{padding:9px 5px;font-size:12px}input[type=range]{width:100%;accent-color:var(--gold)}.directions{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:190px;margin:auto}.directions button:nth-child(1){grid-column:2}.directions button:nth-child(2){grid-column:1;grid-row:2}.directions button:nth-child(3){grid-column:2;grid-row:2}.directions button:nth-child(4){grid-column:3;grid-row:2}.toggle{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:12px}.toggle input{accent-color:var(--gold)}.actions{display:grid;gap:8px}.actions button{width:100%}.status{font-size:12px;color:var(--mint);min-height:18px}.frames-panel{margin-top:16px}.frames{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}.frame{background:#111722;border:1px solid var(--line);border-radius:9px;padding:7px;text-align:center;color:var(--muted);font-size:11px}.frame canvas{width:100%;image-rendering:pixelated;display:block}.frame.active{border-color:var(--gold);box-shadow:inset 0 0 0 1px #f2bd5933;color:var(--gold)}.note{color:var(--muted);font-size:12px;margin:13px 0 0}.bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.mini{border:1px solid var(--line);border-radius:12px;padding:14px;background:#171e2b}.mini strong{display:block;font-size:13px;margin-bottom:4px}.mini span{color:var(--muted);font-size:12px}
+@media(max-width:850px){.workspace{grid-template-columns:1fr}.intro{align-items:start;flex-direction:column}.bottom{grid-template-columns:1fr}.stage{height:350px}}
+@media(max-width:520px){header{padding:13px}.pill{display:none}.frames{grid-template-columns:repeat(3,minmax(0,1fr))}.stage{height:290px}.stage-foot{flex-direction:column;gap:4px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="sigil">⚔</div><div><h1>Estúdio RPG</h1><small>Pixel animation lab</small></div></div><span class="pill">● Ambiente de criação</span></header>
+<main>
+<section class="intro"><div><div class="eyebrow">Nosso laboratório visual</div><h2>Dar vida ao mundo,<br>quadro por quadro.</h2><p>Um espaço para criar, observar e refinar animações do nosso RPG 2D. Esta primeira bancada traz uma prévia animada, controles de movimento e exportação de spritesheet.</p></div></section>
+<section class="workspace">
+<div class="panel"><h3>Pré-visualização da animação</h3><div class="stage"><span class="stage-tag" id="stageTag">PROTAGONISTA · TESTE</span><canvas id="view" width="192" height="192" aria-label="Prévia pixel art do personagem"></canvas></div><div class="stage-foot"><span id="frameInfo">Quadro 1 de 6</span><span>Prévia em pixel art · escala nítida</span></div></div>
+<aside class="panel controls"><h3>Mesa de animação</h3><div class="btnrow"><button class="primary" id="play">▶ Reproduzir</button><button id="pause">Ⅱ Pausar</button><button id="reset">↻ Reiniciar</button></div>
+<div class="field"><label for="animation">Movimento</label><select id="animation"><option value="walk">Caminhar</option><option value="idle">Parado / respirar</option><option value="run">Correr</option><option value="attack">Ataque (estudo)</option></select></div>
+<div class="field"><label for="direction">Direção</label><select id="direction"><option value="down">↓ Frente</option><option value="up">↑ Costas</option><option value="left">← Esquerda</option><option value="right">→ Direita</option></select></div>
+<div class="field"><label for="speed">Ritmo da animação <output id="speedLabel">100%</output></label><input id="speed" type="range" min="25" max="200" step="5" value="100"></div>
+<div class="field"><label for="fps">Taxa de quadros <output id="fpsLabel">12 FPS</output></label><input id="fps" type="range" min="4" max="24" value="12"></div>
+<div class="directions" aria-label="Atalhos de direção"><button data-dir="up">↑</button><button data-dir="left">←</button><button data-dir="down">↓</button><button data-dir="right">→</button></div>
+<label class="toggle"><input type="checkbox" id="loop" checked> Repetir continuamente</label>
+<div class="actions"><button class="primary" id="export">⬇ Exportar spritesheet PNG</button><button id="exportFrame">⬇ Exportar quadro atual</button></div><div class="status" id="status">Estúdio pronto para criar.</div></aside>
+</section>
+<section class="panel frames-panel"><h3>Sequência de quadros</h3><div class="frames" id="frames"></div><p class="note">Selecione uma animação ou direção para visualizar os quadros. O personagem desta bancada é provisório; os sprites oficiais serão integrados preservando os desenhos de referência.</p></section>
+<section class="bottom"><div class="mini"><strong>01 · Criar</strong><span>Preparar poses, movimentos e estudos visuais para os elementos do jogo.</span></div><div class="mini"><strong>02 · Revisar</strong><span>Você acompanha a prévia e aponta o que deseja ajustar.</span></div><div class="mini"><strong>03 · Exportar</strong><span>Organizar spritesheets e recursos para integração no projeto RPG.</span></div></section>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),view=$('view'),ctx=view.getContext('2d');ctx.imageSmoothingEnabled=false;
+const W=192,H=192,N=6;let frame=0,playing=false,raf=0,last=0,acc=0;
+const C={hair:'#29232a',hair2:'#493840',skin:'#e8b58c',shirt:'#d7c3a2',vest:'#79502f',pants:'#34383a',boot:'#493323',bag:'#87552e'};
+function px(c,x,y,w,h,color){c.fillStyle=color;c.fillRect(x,y,w,h)}
+function draw(c,f,dir,anim,background=true){
+ c.clearRect(0,0,W,H);if(background){px(c,0,0,W,H,'#263c2d');for(let i=0;i<65;i++){const x=(i*47+13)%W,y=(i*71+19)%H;px(c,x,y,3,2,i%3?'#304a34':'#39563a')}px(c,76,151,40,5,'#7b6946')}
+ const walking=anim!=='idle',run=anim==='run',bob=walking?(f%2?-2:0):Math.sin(f*Math.PI/3)*1,stride=walking?(f%2?3:-3):0;
+ c.save();c.translate(96,105+bob);px(c,-16,38,32,5,'#1b2b20');
+ if(dir==='up'||dir==='down'){px(c,-10+stride,22,8,14,C.pants);px(c,2-stride,22,8,14,C.pants);px(c,-11+stride,34,10,5,C.boot);px(c,1-stride,34,10,5,C.boot)}
+ else{px(c,-7,22,9,14,C.pants);px(c,2,22,8,14,C.pants);px(c,-8+(f%2?2:-1),34,10,5,C.boot);px(c,1+(f%2?-2:1),34,10,5,C.boot)}
+ if(dir==='down'){px(c,-12,0,24,23,C.shirt);px(c,-12,4,7,18,C.vest);px(c,5,4,7,18,C.vest);px(c,-17,3,5,15,C.skin);px(c,12,3,5,15,C.skin);px(c,-12,-23,24,23,C.skin);px(c,-14,-30,28,12,C.hair);px(c,-14,-25,5,13,C.hair);px(c,9,-25,5,13,C.hair);px(c,-7,-15,3,3,'#30272a');px(c,4,-15,3,3,'#30272a');px(c,-3,-9,6,2,'#9c5f50')}
+ else if(dir==='up'){px(c,-12,0,24,23,C.shirt);px(c,-12,3,24,16,C.vest);px(c,-14,-24,28,25,C.hair);px(c,-16,-29,32,10,C.hair2);px(c,-17,3,5,15,C.skin);px(c,12,3,5,15,C.skin)}
+ else{const flip=dir==='left';c.scale(flip?-1:1,1);px(c,-10,0,22,23,C.shirt);px(c,-10,4,13,18,C.vest);px(c,-14,3,5,15,C.skin);px(c,10,3,5,15,C.skin);px(c,-8,-23,21,23,C.skin);px(c,-10,-30,26,12,C.hair);px(c,-12,-25,6,14,C.hair);px(c,8,-25,6,12,C.hair);px(c,5,-15,3,3,'#30272a')}
+ if(anim==='attack'){px(c,dir==='left'?-34:23,-3,13,3,'#e6e8f5');px(c,dir==='left'?-34:33,-8,3,13,'#e6e8f5')}
+ if(run)px(c,-20,-1,4,3,'#d9e6f5');c.restore();
+}
+function render(){draw(ctx,frame,$('direction').value,$('animation').value);$('frameInfo').textContent='Quadro '+(frame+1)+' de '+N;renderFrames()}
+function renderFrames(){const wrap=$('frames');wrap.replaceChildren();for(let i=0;i<N;i++){const box=document.createElement('div');box.className='frame'+(i===frame?' active':'');const cv=document.createElement('canvas');cv.width=96;cv.height=96;const cx=cv.getContext('2d');cx.imageSmoothingEnabled=false;cx.scale(.5,.5);draw(cx,i,$('direction').value,$('animation').value,false);box.append(cv,document.createTextNode('Quadro '+(i+1)));box.addEventListener('click',()=>{frame=i;render()});wrap.append(box)}}
+function tick(t){if(!playing)return;if(!last)last=t;acc+=t-last;last=t;const step=1000/(+$('fps').value*(+$('speed').value/100));if(acc>=step){acc%=step;frame++;if(frame>=N){if($('loop').checked)frame=0;else{frame=N-1;stop('Sequência concluída.');return}}render()}raf=requestAnimationFrame(tick)}
+function start(){cancelAnimationFrame(raf);playing=true;last=0;acc=0;$('status').textContent='Animação em reprodução.';raf=requestAnimationFrame(tick)}
+function stop(msg='Animação pausada.'){playing=false;cancelAnimationFrame(raf);last=0;$('status').textContent=msg}
+function downloadCanvas(out,name){const a=document.createElement('a');a.href=out.toDataURL('image/png');a.download=name;a.click()}
+function exportSheet(){const out=document.createElement('canvas');out.width=W*N;out.height=H;const c=out.getContext('2d');for(let i=0;i<N;i++)draw(c,i,$('direction').value,$('animation').value,false);downloadCanvas(out,'estudio-rpg-'+$('animation').value+'-'+$('direction').value+'.png')}
+$('play').onclick=start;$('pause').onclick=()=>stop();$('reset').onclick=()=>{frame=0;render();start()};
+['direction','animation'].forEach(id=>$(id).onchange=()=>{frame=0;render()});
+$('speed').oninput=()=>{$('speedLabel').textContent=$('speed').value+'%'};$('fps').oninput=()=>{$('fpsLabel').textContent=$('fps').value+' FPS'};
+document.querySelectorAll('[data-dir]').forEach(b=>b.onclick=()=>{$('direction').value=b.dataset.dir;frame=0;render()});
+$('export').onclick=exportSheet;$('exportFrame').onclick=()=>{const out=document.createElement('canvas');out.width=W;out.height=H;draw(out.getContext('2d'),frame,$('direction').value,$('animation').value,false);downloadCanvas(out,'estudio-rpg-quadro-'+(frame+1)+'.png')};
+render();start();
+})();
+</script>
+</body></html>

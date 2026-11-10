@@ -22,6 +22,7 @@ jobs:
           cp index.html dist/index.html
           cp masculino.html dist/masculino.html
           cp assets/masculino-walk.png dist/assets/masculino-walk.png
+          cp IMG-20261110-WA0036.jpg dist/IMG-20261110-WA0036.jpg
           cat > dist/LEIA-ME.txt <<'EOF'
           ESTUDIO RPG
           Site estatico para GitHub Pages.

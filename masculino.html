@@ -18,7 +18,7 @@ label{display:flex;align-items:center;justify-content:space-between;gap:15px;mar
 <section class="panel"><div class="stage"><canvas id="view" width="96" height="134"></canvas></div>
 <div class="controls" id="dirs"><button data-row="1" class="active">Frente</button><button data-row="0">Costas</button><button data-row="2">Esquerda</button><button data-row="3">Direita</button></div>
 <div class="controls"><button id="play" class="primary">Ⅱ Pausar</button><button id="restart">↻ Reiniciar</button></div>
-<label>Velocidade <span id="fpslabel">8 FPS</span></label><input id="fps" type="range" min="2" max="16" value="8">
+<label>Velocidade <span id="fpslabel">8 FPS</span></label><input id="fps" type="range" min="2" max="18" value="12">
 <div id="status">Carregando spritesheet…</div></section>
 </main><script>
 (()=>{const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),img=new Image();let row=1,frame=0,fps=8,playing=true,last=0,raf=0;
@@ -27,7 +27,7 @@ function tick(t){if(!playing)return;if(!last)last=t;if(t-last>=1000/fps){frame=(
 function start(){cancelAnimationFrame(raf);playing=true;last=0;document.getElementById('play').textContent='Ⅱ Pausar';raf=requestAnimationFrame(tick)}
 function pause(){playing=false;cancelAnimationFrame(raf);document.getElementById('play').textContent='▶ Reproduzir'}
 img.onload=()=>{document.getElementById('status').textContent='Spritesheet carregada · 7 quadros por direção';draw();start()};
-img.onerror=()=>{document.getElementById('status').textContent='Não foi possível carregar a spritesheet.'};img.src='assets/masculino-walk.png';
+img.onerror=()=>{document.getElementById('status').textContent='Não foi possível carregar a spritesheet.'};img.src='IMG-20261110-WA0036.jpg';
 document.querySelectorAll('[data-row]').forEach(b=>b.onclick=()=>{row=Number(b.dataset.row);frame=0;document.querySelectorAll('[data-row]').forEach(x=>x.classList.toggle('active',x===b));draw()});
 document.getElementById('play').onclick=()=>playing?pause():start();document.getElementById('restart').onclick=()=>{frame=0;draw();start()};
 document.getElementById('fps').oninput=e=>{fps=Number(e.target.value);document.getElementById('fpslabel').textContent=fps+' FPS'};

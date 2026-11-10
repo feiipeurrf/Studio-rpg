@@ -16,14 +16,16 @@ jobs:
     steps:
       - name: Baixar codigo
         uses: actions/checkout@v4
-      - name: Preparar pacote ZIP
+      - name: Preparar site e pacote ZIP
         run: |
-          mkdir -p dist
+          mkdir -p dist/assets
           cp index.html dist/index.html
+          cp masculino.html dist/masculino.html
+          cp assets/masculino-walk.png dist/assets/masculino-walk.png
           cat > dist/LEIA-ME.txt <<'EOF'
           ESTUDIO RPG
           Site estatico para GitHub Pages.
-          Abra index.html em um navegador.
+          Inclui a previa animada do personagem masculino em masculino.html.
           O editor gera spritesheets PNG e pacotes ZIP localmente.
           EOF
           cd dist

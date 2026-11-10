@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101522"><title>Personagem masculino — Estúdio RPG</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111d;--panel:#172438;--line:#354a66;--gold:#edbd65;--text:#f2f5fa;--muted:#a9b7ca}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#293955,#0b111d 65%);color:var(--text);font:15px system-ui,Arial;padding:18px}
+main{max-width:920px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-weight:850;letter-spacing:1px}.brand b{color:var(--gold);font-size:23px;margin-right:8px}
+a,button{color:var(--text)}a{color:var(--gold)}.panel{background:linear-gradient(145deg,#1a2840,#131d2d);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
+.stage{height:380px;display:grid;place-items:center;border:1px solid #435875;border-radius:10px;background-color:#263d35;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:24px 24px}
+canvas{width:192px;height:268px;image-rendering:pixelated;image-rendering:crisp-edges}
+h1{font-size:22px;margin:18px 0 4px}.muted{color:var(--muted);font-size:13px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+button{background:#263750;border:1px solid #526984;border-radius:8px;padding:10px 13px;cursor:pointer;font:inherit}button.active,button.primary{background:#76551d;border-color:#ae843d}
+label{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:14px;color:#d4deea;font-size:13px}input{accent-color:var(--gold);width:55%}
+#status{color:#8fe0b3;font-size:12px;margin-top:12px}
+@media(max-width:600px){body{padding:10px}.stage{height:320px}canvas{width:168px;height:234px}}
+</style></head><body><main>
+<div class="top"><div class="brand"><b>⚔</b>ESTÚDIO RPG <span class="muted">/ PRÉVIA DE ANIMAÇÃO</span></div><a href="./">← Voltar ao estúdio</a></div>
+<h1>Personagem masculino — caminhada</h1><div class="muted">Prévia animada da folha de sprites, com quatro direções.</div>
+<section class="panel"><div class="stage"><canvas id="view" width="96" height="134"></canvas></div>
+<div class="controls" id="dirs"><button data-row="1" class="active">Frente</button><button data-row="0">Costas</button><button data-row="2">Esquerda</button><button data-row="3">Direita</button></div>
+<div class="controls"><button id="play" class="primary">Ⅱ Pausar</button><button id="restart">↻ Reiniciar</button></div>
+<label>Velocidade <span id="fpslabel">8 FPS</span></label><input id="fps" type="range" min="2" max="16" value="8">
+<div id="status">Carregando spritesheet…</div></section>
+</main><script>
+(()=>{const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),img=new Image();let row=1,frame=0,fps=8,playing=true,last=0,raf=0;
+function draw(){ctx.clearRect(0,0,96,134);if(img.complete&&img.naturalWidth){const sw=img.naturalWidth/7,sh=img.naturalHeight/4;ctx.imageSmoothingEnabled=false;ctx.drawImage(img,frame*sw,row*sh,sw,sh,0,0,96,134)}}
+function tick(t){if(!playing)return;if(!last)last=t;if(t-last>=1000/fps){frame=(frame+1)%7;last=t;draw()}raf=requestAnimationFrame(tick)}
+function start(){cancelAnimationFrame(raf);playing=true;last=0;document.getElementById('play').textContent='Ⅱ Pausar';raf=requestAnimationFrame(tick)}
+function pause(){playing=false;cancelAnimationFrame(raf);document.getElementById('play').textContent='▶ Reproduzir'}
+img.onload=()=>{document.getElementById('status').textContent='Spritesheet carregada · 7 quadros por direção';draw();start()};
+img.onerror=()=>{document.getElementById('status').textContent='Não foi possível carregar a spritesheet.'};img.src='assets/masculino-walk.png';
+document.querySelectorAll('[data-row]').forEach(b=>b.onclick=()=>{row=Number(b.dataset.row);frame=0;document.querySelectorAll('[data-row]').forEach(x=>x.classList.toggle('active',x===b));draw()});
+document.getElementById('play').onclick=()=>playing?pause():start();document.getElementById('restart').onclick=()=>{frame=0;draw();start()};
+document.getElementById('fps').oninput=e=>{fps=Number(e.target.value);document.getElementById('fpslabel').textContent=fps+' FPS'};
+})();
+</script></body></html>

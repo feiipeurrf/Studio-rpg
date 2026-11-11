@@ -14,14 +14,14 @@ label{display:flex;align-items:center;justify-content:space-between;gap:15px;mar
 @media(max-width:600px){body{padding:10px}.stage{height:320px}canvas{width:168px;height:234px}}
 </style></head><body><main>
 <div class="top"><div class="brand"><b>⚔</b>ESTÚDIO RPG <span class="muted">/ PRÉVIA DE ANIMAÇÃO</span></div><a href="./">← Voltar ao estúdio</a></div>
-<h1>Personagem masculino — caminhada</h1><div class="muted">Prévia animada da folha de sprites, com quatro direções.</div>
+<h1>Personagem masculino — caminhada para a direita</h1><div class="muted">Prévia animada da direção direita · 7 quadros · ciclo contínuo.</div>
 <section class="panel"><div class="stage"><canvas id="view" width="96" height="134"></canvas></div>
-<div class="controls" id="dirs"><button data-row="1" class="active">Frente</button><button data-row="0">Costas</button><button data-row="2">Esquerda</button><button data-row="3">Direita</button></div>
+<div class="controls" id="dirs"><button data-row="1">Frente</button><button data-row="0">Costas</button><button data-row="2">Esquerda</button><button data-row="3" class="active">Direita</button></div>
 <div class="controls"><button id="play" class="primary">Ⅱ Pausar</button><button id="restart">↻ Reiniciar</button></div>
 <label>Velocidade <span id="fpslabel">8 FPS</span></label><input id="fps" type="range" min="2" max="18" value="12">
 <div id="status">Carregando spritesheet…</div></section>
 </main><script>
-(()=>{const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),img=new Image();let row=1,frame=0,fps=8,playing=true,last=0,raf=0;
+(()=>{const canvas=document.getElementById('view'),ctx=canvas.getContext('2d'),img=new Image();let row=3,frame=0,fps=8,playing=true,last=0,raf=0;
 function draw(){ctx.clearRect(0,0,96,134);if(img.complete&&img.naturalWidth){const sw=img.naturalWidth/7,sh=img.naturalHeight/4;ctx.imageSmoothingEnabled=false;ctx.drawImage(img,frame*sw,row*sh,sw,sh,0,0,96,134)}}
 function tick(t){if(!playing)return;if(!last)last=t;if(t-last>=1000/fps){frame=(frame+1)%7;last=t;draw()}raf=requestAnimationFrame(tick)}
 function start(){cancelAnimationFrame(raf);playing=true;last=0;document.getElementById('play').textContent='Ⅱ Pausar';raf=requestAnimationFrame(tick)}
